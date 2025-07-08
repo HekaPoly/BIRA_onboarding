@@ -50,8 +50,10 @@ def plot_examples(images, labels, preds=None, n=6):
 def main(batch_size=128, epochs=5, lr=1e-3, random_state=0):
     torch.manual_seed(random_state)
 
-    train_ds = datasets.MNIST(root="data", train=True, download=True)
-    test_ds  = datasets.MNIST(root="data", train=False, download=True)
+    transform = transforms.ToTensor()
+
+    train_ds = datasets.MNIST(root="data", train=True, download=True, transform=transform)
+    test_ds  = datasets.MNIST(root="data", train=False, download=True, transform=transform)
 
     train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True,  num_workers=2)
     test_loader  = DataLoader(test_ds,  batch_size=batch_size, shuffle=False, num_workers=2)
