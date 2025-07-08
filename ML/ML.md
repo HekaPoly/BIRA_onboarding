@@ -21,6 +21,10 @@ Chaque exercice suit généralement la structure suivante :
 2. **Implémentation et entraînement du modèle**
 3. **Évaluation du modèle avec des métriques pertinentes**
 
+## Notebook
+Un notebook Jupyter des exercices de ce dépôt est également mis à votre disposition.
+Nous vous suggérons fortement de l’utiliser avec [Google colab](https://https://colab.research.google.com) si vous n’êtes pas à l’aise avec l’exécution des scripts en ligne de commande ou si vous préférez un environnement interactif pour coder, tester et visualiser les résultats pas à pas.
+
 ## Pré-requis
 
 Avant de commencer, assurez‑vous d’avoir :
