@@ -31,7 +31,7 @@ Avant de commencer, assurez‑vous d’avoir :
 - **Dépendances du projet** installées :
 
 ```bash
-pip install -r requirements.txt
+pip install numpy matplotlib scikit-learn torch torchvision
 ```
 
 ## Exécution des exercices
@@ -39,23 +39,25 @@ pip install -r requirements.txt
 Chaque exercice possède un fichier que vous pouvez exécuter directement à partir de la racine du dépôt :
 
 ```bash
-python src/linear_regression.py      # exemple
+python src/linear_regression.py # exemple
 ```
 
 Remplacez le chemin par celui de l'exercice que vous souhaitez lancer.
 
 ## Lancement des tests
 
-Les tests unitaires sont écrits avec **pytest**. Depuis la racine du dépôt :
+Les tests unitaires sont écrits avec **unittest**. Depuis la racine du dépôt :
 
 ```bash
-pytest -q
+cd ML/tests
+PYTHONPATH=../src python -m unittest discover
 ```
 
 Vous pouvez également exécuter un seul fichier de tests :
 
 ```bash
-pytest tests/test_linear_regression.py      # exemple
+cd ML/tests
+PYTHONPATH=../src python -m unittest test_linear_regression.py # exemple
 ```
 
 ## Pour aller plus loin

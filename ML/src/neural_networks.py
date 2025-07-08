@@ -60,7 +60,8 @@ def main(batch_size=128, epochs=5, lr=1e-3, random_state=0):
 
     # TODO: Effectuer l'entraînement et la validation de votre modèle
 
-    # TODO: Afficher 
+    raise NotImplementedError()
+
     sample_imgs, sample_labels = next(iter(test_loader))[:6]
     sample_preds = model(sample_imgs.to(DEVICE)).argmax(1).cpu()
     plot_examples(sample_imgs, sample_labels, sample_preds)
