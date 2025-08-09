@@ -9,7 +9,35 @@ from typing import Tuple
 
 def generate_polynomial_data(n_samples: int, noise: int, random_state: int = 0) -> Tuple[np.ndarray, np.ndarray]:
     """
-    Génère un dataset suivant une courbe polynomiale
+    Génère un dataset synthétique suivant une relation polynomiale cubique bruitée.
+
+    La variable cible y est générée selon la formule :
+        y = 3 * x³ - 2 * x² + x + bruit
+    
+    où :
+        - x est une variable explicative tirée uniformément dans l'intervalle [-2, 2].
+        - le bruit est un vecteur de valeurs aléatoires tirées d'une distribution normale centrée réduite,
+          multiplié par un coefficient `noise` qui contrôle son amplitude.
+
+    Cette construction permet de simuler un phénomène non linéaire avec une variabilité naturelle,
+    utile pour tester et entraîner des modèles de régression sur des données réalistes mais contrôlées.
+
+    Parameters
+    ----------
+    n_samples : int
+        Nombre d'échantillons à générer.
+    noise : int
+        Amplitude (écart-type) du bruit gaussien ajouté aux valeurs cibles.
+        Un bruit plus important rend la relation entre x et y moins précise.
+    random_state : int, optional (default=0)
+        Graine pour initialiser le générateur pseudo-aléatoire, afin de garantir la reproductibilité.
+
+    Returns
+    -------
+    X : np.ndarray, shape (n_samples, 1)
+        Données explicatives générées, uniformément réparties entre -2 et 2.
+    y : np.ndarray, shape (n_samples,)
+        Valeurs cibles calculées selon la fonction polynomiale bruitée.
     """
     rng = np.random.default_rng(random_state)
     X = rng.uniform(-2, 2, size=(n_samples, 1))
@@ -20,7 +48,26 @@ def generate_polynomial_data(n_samples: int, noise: int, random_state: int = 0) 
 def train_poly(X_train: np.ndarray, y_train: np.ndarray, degree: int = 2) -> Tuple[LinearRegression, PolynomialFeatures]:
     """
     Crée et entraîne un modèle de régression polynomiale.
-    Retourne le modèle et le transformateur PolynomialFeatures.
+
+    Parameters
+    ----------
+    X_train : np.ndarray
+        Matrice des variables explicatives d'entraînement,
+        de forme (n_samples, n_features).
+    y_train : np.ndarray
+        Vecteur des valeurs cibles d'entraînement,
+        de forme (n_samples,).
+    degree : int, optional
+        Degré du polynôme à utiliser pour la transformation des données
+        (par défaut 2).
+
+    Returns
+    -------
+    model : LinearRegression
+        Modèle de régression linéaire ajusté sur les caractéristiques polynomiales.
+    poly : PolynomialFeatures
+        Transformateur PolynomialFeatures utilisé pour générer les
+        caractéristiques polynomiales à partir des données d'entrée.
     """
     # TODO: Implémenter l'entraînement du modèle de régression polynomiale
 
@@ -28,7 +75,29 @@ def train_poly(X_train: np.ndarray, y_train: np.ndarray, degree: int = 2) -> Tup
 
 def eval_poly(model: LinearRegression, poly: PolynomialFeatures, X_val: np.ndarray, y_val: np.ndarray) -> dict[str, float]:
     """
-    Évalue le modèle de régression polynomiale sur l'ensemble de validation transformé et renvoie les métriques.
+    Évalue le modèle de régression polynomiale sur un ensemble de validation.
+
+    Parameters
+    ----------
+    model : LinearRegression
+        Modèle de régression polynomiale préalablement entraîné.
+    poly : PolynomialFeatures
+        Transformateur PolynomialFeatures utilisé pour générer les caractéristiques polynomiales.
+    X_val : np.ndarray
+        Matrice des variables explicatives de validation,
+        de forme (n_samples, n_features).
+    y_val : np.ndarray
+        Vecteur des valeurs cibles de validation,
+        de forme (n_samples,).
+
+    Returns
+    -------
+    metrics : dict[str, float]
+        Dictionnaire contenant les métriques, où les clés sont :
+
+        - ``rmse`` : erreur quadratique moyenne racine.
+        - ``mse``  : erreur quadratique moyenne.
+        - ``r2``   : coefficient de détermination R².
     """
     # TODO: Implémenter la validation du modèle de régression polynomiale
 
@@ -36,7 +105,21 @@ def eval_poly(model: LinearRegression, poly: PolynomialFeatures, X_val: np.ndarr
 
 def train_linear(X_train: np.ndarray, y_train: np.ndarray) -> LinearRegression:
     """
-    Entraîne un modèle de régression linéaire sur les données d'origine.
+    Entraîne un modèle de régression linéaire classique sur les données d'entraînement.
+
+    Parameters
+    ----------
+    X_train : np.ndarray
+        Matrice des variables explicatives d'entraînement,
+        de forme (n_samples, n_features).
+    y_train : np.ndarray
+        Vecteur des valeurs cibles d'entraînement,
+        de forme (n_samples,).
+
+    Returns
+    -------
+    model : LinearRegression
+        Modèle de régression linéaire ajusté sur les données.
     """
     # TODO: Implémenter l'entraînement du modèle de régression linéaire
 
@@ -44,7 +127,27 @@ def train_linear(X_train: np.ndarray, y_train: np.ndarray) -> LinearRegression:
 
 def eval_linear(model: LinearRegression, X_val: np.ndarray, y_val: np.ndarray) -> dict[str, float]:
     """
-    Évalue le modèle de régression linéaire sur l'ensemble de validation et renvoie les métriques.
+    Évalue le modèle de régression linéaire sur un ensemble de validation.
+
+    Parameters
+    ----------
+    model : LinearRegression
+        Modèle de régression linéaire préalablement entraîné.
+    X_val : np.ndarray
+        Matrice des variables explicatives de validation,
+        de forme (n_samples, n_features).
+    y_val : np.ndarray
+        Vecteur des valeurs cibles de validation,
+        de forme (n_samples,).
+
+    Returns
+    -------
+    metrics : dict[str, float]
+        Dictionnaire contenant les métriques, où les clés sont :
+
+        - ``rmse`` : erreur quadratique moyenne racine.
+        - ``mse``  : erreur quadratique moyenne.
+        - ``r2``   : coefficient de détermination R².
     """
     # TODO: Implémenter la validation du modèle de régression linéaire
 
@@ -78,13 +181,15 @@ def main(test_ratio: float = 0.2, random_state: int = 0, degree: int = 2):
 
     # TODO: Séparer le jeu de données en ensembles d'entraînement et de validation
     
-    # TODO: Entraînement et évaluation du modèle de régression linéaire
+    # TODO: Instancier et entraîner votre modèle de régression linéaire et effectuer la validation du modèle
     
-    # TODO: Entraînement et évaluation du modèle de régression polynomiale
+    # TODO: Instancier et entraîner votre modèle de régression polynomiale et effectuer la validation du modèle
     
-    # TODO: Afficher les métriques du modèle de régression linéaire
+    # TODO: Afficher les métriques, les coefficients et l'ordonnée à l'origine
+    #       du modèle de régression linéaire
     
-    # TODO: Afficher les métriques du modèle de régression polynomiale
+    # TODO: Afficher les métriques, les coefficients et l'ordonnée à l'origine
+    #       du modèle de régression polynomiale
     
     # TODO: Afficher les visualisations de comparaison des deux modèles
     #       à l'aide de la fonction plot

@@ -15,8 +15,24 @@ from sklearn.metrics import (
 
 def train(X_train: np.ndarray, y_train: np.ndarray) -> LogisticRegression:
     """
-    Crée et entraîne un modèle de régression logistique.
-    Retourne le modèle entraîné.
+    Crée et entraîne un modèle de régression logistique sur l'ensemble d'entraînement.
+
+    Le modèle utilise le solver 'lbfgs' avec un nombre maximal d'itérations fixé à 1000
+    pour assurer la convergence.
+
+    Parameters
+    ----------
+    X_train : np.ndarray
+        Matrice des variables explicatives d'entraînement,
+        de forme (n_samples, n_features).
+    y_train : np.ndarray
+        Vecteur des labels cibles d'entraînement,
+        de forme (n_samples,).
+
+    Returns
+    -------
+    model : LogisticRegression
+        Modèle de régression logistique entraîné.
     """
 
     # TODO: Effectuer la régression logistique sur l'ensemble d'entraînement
@@ -25,8 +41,30 @@ def train(X_train: np.ndarray, y_train: np.ndarray) -> LogisticRegression:
 
 def eval(model: LogisticRegression, X_val: np.ndarray, y_val: np.ndarray) -> dict[str, float]:
     """
-    Évalue le modèle sur l'ensemble de validation et retourne les métriques
-    (Accuracy, Precision, Recall, F1).
+    Évalue les performances du modèle de régression logistique sur l'ensemble de validation.
+
+    Les métriques retournées sont l'Accuracy, la Precision, le Recall et le F1-score.
+
+    Parameters
+    ----------
+    model : LogisticRegression
+        Modèle de régression logistique entraîné.
+    X_val : np.ndarray
+        Matrice des variables explicatives de validation,
+        de forme (n_samples, n_features).
+    y_val : np.ndarray
+        Vecteur des labels cibles de validation,
+        de forme (n_samples,).
+
+    Returns
+    -------
+    metrics : dict[str, float]
+        Dictionnaire contenant les métriques suivantes, où les clés sont:
+
+        - ``accuracy`` : précision globale.
+        - ``precision`` : précision positive.
+        - ``recall`` : rappel.
+        - ``f1`` : score F1.
     """
 
     # TODO: Effectuer la validation du modèle sur l'ensemble de validation
@@ -64,13 +102,13 @@ def main(test_ratio: float = 0.2, random_state: int = 42):
     X = data.data[:, idx]
     y = data.target
 
-    # TODO: Séparer votre jeu de données en ensemble d'entraînement et de validation
+    # TODO: Séparer le jeu de données en ensemble d'entraînement et de validation
 
     # TODO: Normaliser vos variables explicatives
 
-    # TODO: Instancier votre modèle entraîné et effectuer la validation du modèle
+    # TODO: Instancier et entraîner votre modèle et effectuer la validation du modèle
 
-    # TODO: Afficher les métriques et la matrice de confusion
+    # TODO: Afficher les métriques et la matrice de confusion du modèle
 
     # TODO: Afficher les visualisations à partir de la fonction plot
 

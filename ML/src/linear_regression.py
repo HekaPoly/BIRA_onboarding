@@ -7,15 +7,48 @@ from sklearn.metrics import root_mean_squared_error, mean_squared_error, r2_scor
 
 def train(X_train: np.ndarray, y_train: np.ndarray) -> LinearRegression:
     """
-    Crée et entraîne un modèle de régression linéaire.
-    Retourne le modèle entraîné.
+    Entraîne un modèle de régression linéaire sur les données fournies.
+
+    Parameters
+    ----------
+    X_train : np.ndarray
+        Matrice des variables explicatives d'entraînement, 
+        de forme (n_samples, n_features).
+    y_train : np.ndarray
+        Vecteur des valeurs cibles d'entraînement, 
+        de forme (n_samples,).
+
+    Returns
+    -------
+    model : LinearRegression
+        Modèle de régression linéaire ajusté sur les données.
     """
     # TODO: Effectuer la régression linéaire sur l'ensemble d'entraînement
     raise NotImplementedError()
 
 def eval(model: LinearRegression, X_val: np.ndarray, y_val: np.ndarray) -> dict[str, float]:
     """
-    Évalue le modèle sur l'ensemble de validation et renvoie les métriques.
+    Évalue les performances du modèle sur un ensemble de validation.
+
+    Parameters
+    ----------
+    model : LinearRegression
+        Modèle de régression linéaire préalablement entraîné.
+    X_val : np.ndarray
+        Matrice des variables explicatives de validation,
+        de forme (n_samples, n_features).
+    y_val : np.ndarray
+        Vecteur des valeurs cibles de validation,
+        de forme (n_samples,).
+
+    Returns
+    -------
+    metrics : dict[str, float]
+        Dictionnaire contenant les métriques, où les clés sont :
+
+        - ``rmse`` : erreur quadratique moyenne racine.
+        - ``mse``  : erreur quadratique moyenne.
+        - ``r2``   : coefficient de détermination R².
     """
     # TODO: Effectuer la validation du modèle sur l'ensemble de validation
     raise NotImplementedError()
@@ -38,9 +71,9 @@ def main(test_ratio: float = 0.2, random_state: int = 0):
     X = data.data[:, [data.feature_names.index("MedInc")]]
     y = data.target
 
-    # TODO: Séparer votre jeu de données en ensembles d'entraînement et de validation
+    # TODO: Séparer le jeu de données en ensembles d'entraînement et de validation
 
-    # TODO: Instancier votre modèle entraîné et effectuer la validation du modèle
+    # TODO: Instancier et entraîner votre modèle et effectuer la validation du modèle
 
     # TODO: Afficher les métriques, les coefficients et l'ordonnée à l'origine
     #       du modèle

@@ -8,10 +8,54 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
 def train(model_class, X_train: np.ndarray, y_train: np.ndarray, **kwargs):
+    """
+    Crée et entraîne un modèle de régression donné sur les données d'entraînement.
+
+    Parameters
+    ----------
+    model_class : class
+        Classe du modèle à instancier (ex: LinearRegression, DecisionTreeRegressor).
+    X_train : np.ndarray
+        Matrice des variables explicatives d'entraînement, forme (n_samples, n_features).
+    y_train : np.ndarray
+        Vecteur des cibles d'entraînement, forme (n_samples,).
+    **kwargs :
+        Arguments optionnels à passer au constructeur du modèle.
+
+    Returns
+    -------
+    model : objet
+        Modèle entraîné.
+    """
+
     # TODO: Implémenter l'entraînement du modèle
     raise NotImplementedError()
 
-def eval(model, X_val: np.ndarray, y_val: np.ndarray) -> dict[str, float]:
+def eval(model, X_val: np.ndarray, y_val: np.ndarray) -> dict[str, float | np.ndarray]:
+    """
+    Évalue un modèle sur un ensemble de validation.
+
+    Calcule les métriques RMSE, MSE et coefficient de détermination R²,
+    et génère les prédictions correspondantes.
+
+    Parameters
+    ----------
+    model : objet
+        Modèle entraîné avec une méthode predict.
+    X_val : np.ndarray
+        Matrice des variables explicatives de validation.
+    y_val : np.ndarray
+        Vecteur des cibles de validation.
+
+    Returns
+    -------
+    dict[str, float | np.ndarray]
+        Dictionnaire contenant les métriques et les prédictions, où les clés sont:
+        - 'rmse' (float) : racine de l'erreur quadratique moyenne,
+        - 'mse' (float) : erreur quadratique moyenne,
+        - 'r2' (float) : coefficient de détermination,
+        - 'y_pred' (np.ndarray) : prédictions sur X_val.
+    """
     # TODO: Implémenter la validation du modèle
     raise NotImplementedError()
 
