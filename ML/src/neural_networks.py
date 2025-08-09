@@ -72,7 +72,7 @@ def train(model, loader, criterion, optimizer, epoch):
 
 
 def eval(model, loader, criterion):
-        """
+    """
     Évalue le modèle sur un ensemble de validation.
 
     Parameters
