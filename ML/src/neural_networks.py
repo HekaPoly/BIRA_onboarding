@@ -14,11 +14,11 @@ class NeuralNet(nn.Module):
 
     Architecture :
     - nn.Flatten() : aplatissement des images 28x28 en vecteurs 1D de taille 784.
-    - Couche linéaire 1 : 784 → 128 neurones.
+    - Couche 1 : 784 → 128 neurones.
     - ReLU : fonction d'activation non linéaire.
-    - Couche linéaire 2 : 128 → 64 neurones.
+    - Couche 2 : 128 → 64 neurones.
     - ReLU : fonction d'activation non linéaire.
-    - Couche linéaire 3 : 64 → 10 neurones (logits pour chaque classe MNIST).
+    - Couche 3 : 64 → 10 neurones (logits pour chaque classe MNIST).
 
     Cette architecture permet d'apprendre des représentations successives de plus en plus abstraites,
     adaptées à la classification des chiffres manuscrits.

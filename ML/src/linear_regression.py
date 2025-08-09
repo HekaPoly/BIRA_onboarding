@@ -12,7 +12,7 @@ def train(X_train: np.ndarray, y_train: np.ndarray) -> LinearRegression:
     Parameters
     ----------
     X_train : np.ndarray
-        Matrice des variables explicatives d'entraînement, 
+        Matrice des variables explicatives pour l'entraînement, 
         de forme (n_samples, n_features).
     y_train : np.ndarray
         Vecteur des valeurs cibles d'entraînement, 
@@ -35,10 +35,10 @@ def eval(model: LinearRegression, X_val: np.ndarray, y_val: np.ndarray) -> dict[
     model : LinearRegression
         Modèle de régression linéaire préalablement entraîné.
     X_val : np.ndarray
-        Matrice des variables explicatives de validation,
+        Matrice des variables explicatives pour la validation,
         de forme (n_samples, n_features).
     y_val : np.ndarray
-        Vecteur des valeurs cibles de validation,
+        Vecteur des valeurs cibles pour la validation,
         de forme (n_samples,).
 
     Returns

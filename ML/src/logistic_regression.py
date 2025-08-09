@@ -23,10 +23,10 @@ def train(X_train: np.ndarray, y_train: np.ndarray) -> LogisticRegression:
     Parameters
     ----------
     X_train : np.ndarray
-        Matrice des variables explicatives d'entraînement,
+        Matrice des variables explicatives pour l'entraînement,
         de forme (n_samples, n_features).
     y_train : np.ndarray
-        Vecteur des labels cibles d'entraînement,
+        Vecteur des classes cibles d'entraînement,
         de forme (n_samples,).
 
     Returns
@@ -50,10 +50,10 @@ def eval(model: LogisticRegression, X_val: np.ndarray, y_val: np.ndarray) -> dic
     model : LogisticRegression
         Modèle de régression logistique entraîné.
     X_val : np.ndarray
-        Matrice des variables explicatives de validation,
+        Matrice des variables explicatives pour la validation,
         de forme (n_samples, n_features).
     y_val : np.ndarray
-        Vecteur des labels cibles de validation,
+        Vecteur des classes cibles de validation,
         de forme (n_samples,).
 
     Returns

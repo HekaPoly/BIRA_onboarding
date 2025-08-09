@@ -16,7 +16,7 @@ def train(model_class, X_train: np.ndarray, y_train: np.ndarray, **kwargs):
     model_class : class
         Classe du modèle à instancier (ex: LinearRegression, DecisionTreeRegressor).
     X_train : np.ndarray
-        Matrice des variables explicatives d'entraînement, forme (n_samples, n_features).
+        Matrice des variables explicatives pour l'entraînement, de forme (n_samples, n_features).
     y_train : np.ndarray
         Vecteur des cibles d'entraînement, forme (n_samples,).
     **kwargs :
@@ -43,7 +43,7 @@ def eval(model, X_val: np.ndarray, y_val: np.ndarray) -> dict[str, float | np.nd
     model : objet
         Modèle entraîné avec une méthode predict.
     X_val : np.ndarray
-        Matrice des variables explicatives de validation.
+        Matrice des variables explicatives pour la validation.
     y_val : np.ndarray
         Vecteur des cibles de validation.
 

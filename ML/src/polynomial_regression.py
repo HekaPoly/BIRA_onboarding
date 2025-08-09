@@ -52,7 +52,7 @@ def train_poly(X_train: np.ndarray, y_train: np.ndarray, degree: int = 2) -> Tup
     Parameters
     ----------
     X_train : np.ndarray
-        Matrice des variables explicatives d'entraînement,
+        Matrice des variables explicatives pour l'entraînement,
         de forme (n_samples, n_features).
     y_train : np.ndarray
         Vecteur des valeurs cibles d'entraînement,
@@ -66,7 +66,7 @@ def train_poly(X_train: np.ndarray, y_train: np.ndarray, degree: int = 2) -> Tup
     model : LinearRegression
         Modèle de régression linéaire ajusté sur les caractéristiques polynomiales.
     poly : PolynomialFeatures
-        Transformateur PolynomialFeatures utilisé pour générer les
+        Transformateur utilisé pour générer les
         caractéristiques polynomiales à partir des données d'entrée.
     """
     # TODO: Implémenter l'entraînement du modèle de régression polynomiale
@@ -82,12 +82,12 @@ def eval_poly(model: LinearRegression, poly: PolynomialFeatures, X_val: np.ndarr
     model : LinearRegression
         Modèle de régression polynomiale préalablement entraîné.
     poly : PolynomialFeatures
-        Transformateur PolynomialFeatures utilisé pour générer les caractéristiques polynomiales.
+        Transformateur utilisé pour générer les caractéristiques polynomiales.
     X_val : np.ndarray
-        Matrice des variables explicatives de validation,
+        Matrice des variables explicatives pour la validation,
         de forme (n_samples, n_features).
     y_val : np.ndarray
-        Vecteur des valeurs cibles de validation,
+        Vecteur des valeurs cibles pour la validation,
         de forme (n_samples,).
 
     Returns
@@ -110,7 +110,7 @@ def train_linear(X_train: np.ndarray, y_train: np.ndarray) -> LinearRegression:
     Parameters
     ----------
     X_train : np.ndarray
-        Matrice des variables explicatives d'entraînement,
+        Matrice des variables explicatives pour l'entraînement,
         de forme (n_samples, n_features).
     y_train : np.ndarray
         Vecteur des valeurs cibles d'entraînement,
@@ -134,10 +134,10 @@ def eval_linear(model: LinearRegression, X_val: np.ndarray, y_val: np.ndarray) -
     model : LinearRegression
         Modèle de régression linéaire préalablement entraîné.
     X_val : np.ndarray
-        Matrice des variables explicatives de validation,
+        Matrice des variables explicatives pour la validation,
         de forme (n_samples, n_features).
     y_val : np.ndarray
-        Vecteur des valeurs cibles de validation,
+        Vecteur des valeurs cibles pour la validation,
         de forme (n_samples,).
 
     Returns
